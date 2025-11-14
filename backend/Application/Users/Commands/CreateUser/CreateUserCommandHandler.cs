@@ -1,0 +1,57 @@
+﻿using Microsoft.Extensions.Logging;
+
+using Domain.Models;
+using Application.Shared.Data;
+using Application.Shared.Messaging;
+using Application.Users.Errors;
+using Application.Users.Interfaces;
+
+namespace Application.Users.Commands.CreateUser;
+
+public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, Result>
+{
+    private readonly IUsersRepository _usersRepository;
+    private readonly IPasswordHasher _passwordHasher;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly ILogger<CreateUserCommandHandler> _logger;
+    
+    public CreateUserCommandHandler(
+        IUsersRepository usersRepository,
+        IPasswordHasher passwordHasher,
+        IUnitOfWork unitOfWork, ILogger<CreateUserCommandHandler> logger)
+    {
+        _usersRepository = usersRepository;
+        _passwordHasher = passwordHasher;
+        _unitOfWork = unitOfWork;
+        _logger = logger;
+    }
+
+    public async Task<Result> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    {
+        var checkUser = await _usersRepository.GetByEmail(request.Email, cancellationToken);
+        
+        if (checkUser != null)
+        {
+            if (!checkUser.IsActive)
+            {
+                _logger.LogInformation(               
+                    "Tried to create user with email {email} which is already exists but not active.",
+                    request.Email);
+                return Result.Failure(UserErrors.AlreadyExistButNotActive);
+            }
+            _logger.LogInformation(
+                "Tried to create user with email {email} which is already active.",
+                request.Email);
+            return Result.Failure(UserErrors.AlreadyExist);
+        }
+
+        var hashedPassword = _passwordHasher.Generate(request.Password);
+        
+        var user = User.Create(request.Email, hashedPassword, request.FirstName, request.LastName);
+        
+        await _usersRepository.Add(user, cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        
+        return Result.Success();
+    }
+}
