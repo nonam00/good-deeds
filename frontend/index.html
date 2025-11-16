@@ -25,6 +25,102 @@
     </div>
   </header>
 
+
+  <!-- Модалки -->
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+  <!-- Модалка Вход -->
+  <div class="modal" id="login-modal">
+    <div class="modal-header">
+      <h3>Вход в аккаунт</h3>
+      <span class="modal-close" data-close>&times;</span>
+    </div>
+
+    <input type="email" class="input" placeholder="E-mail">
+    <input type="password" class="input" placeholder="Пароль">
+
+    <a href="#" class="link-small">Восстановить пароль</a>
+
+    <button class="btn-blue w100 mt10">Войти</button>
+
+    <div class="modal-bottom">
+      Нет аккаунта? <a href="#" id="open-register-link"><b>Зарегистрируйтесь</b></a>
+    </div>
+  </div>
+
+  <!-- Модалка Регистрация -->
+  <div class="modal" id="register-modal">
+    <div class="modal-header">
+      <h3>Регистрация</h3>
+      <span class="modal-close" data-close>&times;</span>
+    </div>
+
+    <input type="text" class="input" placeholder="Имя">
+    <input type="text" class="input" placeholder="Фамилия">
+    <input type="email" class="input" placeholder="E-mail">
+    <input type="password" class="input" placeholder="Пароль">
+
+    <label class="checkbox-row">
+      <input type="checkbox"> 
+      <span>Я согласен(-а) с предоставлением и обработкой своих персональных данных</span>
+    </label>
+
+    <button class="btn-blue w100 mt10">Зарегистрироваться</button>
+
+    <div class="modal-bottom">
+      Уже есть аккаунт? <a href="#" id="open-login-link"><b>Войдите</b></a>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+<div class="modal" id="create-point-modal">
+  <div class="modal-header">
+    <h3>Создание точки НКО</h3>
+    <span class="modal-close" data-close>&times;</span>
+  </div>
+
+  <input class="input" placeholder="Название точки">
+  <input class="input" placeholder="Описание">
+  <input class="input" placeholder="Номер телефона">
+  <input class="input" placeholder="Город">
+  <input class="input" placeholder="Адрес">
+  <input class="input" placeholder="Социальные сети">
+
+  <label class="logo-upload">
+    <span class="logo-label">Логотип</span>
+    <input type="file" id="nko-logo" hidden>
+    <div id="file-status" class="file-status"></div>
+    <span class="logo-plus">+</span>
+  </label>
+
+  <h4 class="mt10 mb6">Вид деятельности</h4>
+
+  <div class="tags-select" id="tagsSelect">
+    <div class="tag-option" data-tag="Бизнес">Бизнес</div>
+    <div class="tag-option" data-tag="Экология">Экология</div>
+    <div class="tag-option" data-tag="Образование">Образование</div>
+    <div class="tag-option" data-tag="Сообщество">Сообщество</div>
+    <div class="tag-option" data-tag="Право">Право</div>
+    <div class="tag-option" data-tag="Медицина">Медицина</div>
+    <div class="tag-option" data-tag="Благотворительность">Благотворительность</div>
+    <div class="tag-option" data-tag="Спорт">Спорт</div>
+    <div class="tag-option" data-tag="Соц. поддержка">Соц. поддержка</div>
+    <div class="tag-option" data-tag="Наука">Наука</div>
+    <div class="tag-option" data-tag="Культура">Культура</div>
+    <div class="tag-option" data-tag="Религия">Религия</div>
+  </div>
+
+
+  <label class="checkbox-row mt10">
+    <input type="checkbox">
+    <span>Я соглашаюсен(-а) с предоставлением и обработкой своих персональных данных</span>
+  </label>
+
+  <button class="btn-blue w100 mt20">Создать точку</button>
+</div>
+
+
   <div class="layout">
     <aside class="sidebar">
       <div class="search-box">
@@ -45,8 +141,7 @@
     <main class="main-area">
       <aside class="right-col">
         <div class="city-block">
-            <h4>Город</h4>
-            <input id="city-input" class="input" placeholder="Введите город" autocomplete="off" />
+            <input id="city-input" class="input" placeholder="Выберите город" autocomplete="off" />
             <ul id="city-suggestions" class="city-suggestions"></ul>
             <div id="selected-city" class="selected-city"></div>
         </div>
@@ -79,7 +174,7 @@
     </div>
   </div>
 
-    <footer class="footer">© <span id="year"></span> Карта добрых дел </footer>
+    <footer class="footer">© 2025 Карта добрых дел </footer>
 
 
   <script src="app.js"></script>

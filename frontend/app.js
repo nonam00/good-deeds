@@ -197,3 +197,146 @@ document.addEventListener("click", (e) => {
     citySuggestions.style.display = "none";
   }
 });
+
+// Модалки
+
+const loginModal = document.getElementById("login-modal");
+const registerModal = document.getElementById("register-modal");
+const overlay = document.getElementById("modal-overlay");
+
+function openModal(modal) {
+  overlay.classList.add("active");
+  modal.classList.add("active");
+}
+function closeModals() {
+  overlay.classList.remove("active");
+  loginModal.classList.remove("active");
+  registerModal.classList.remove("active");
+}
+
+document.getElementById("login-btn").onclick = () => openModal(loginModal);
+
+document.querySelectorAll("[data-close]").forEach(btn => {
+  btn.onclick = closeModals;
+});
+
+overlay.onclick = closeModals;
+
+document.getElementById("open-register-link").onclick = () => {
+  loginModal.classList.remove("active");
+  registerModal.classList.add("active");
+};
+
+document.getElementById("open-login-link").onclick = () => {
+  registerModal.classList.remove("active");
+  loginModal.classList.add("active");
+};
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const addBtn = document.getElementById('add-point-btn');
+    const modal = document.getElementById('create-point-modal');
+    const overlay = document.getElementById('modal-overlay');
+
+    // Если какого-нибудь блока нет — не пытаемся дальше привязывать обработчики,
+    // но оставляем страницу рабочей и выводим предупреждение.
+    if (!addBtn || !modal || !overlay) {
+      console.warn('Modal init: отсутствуют необходимые элементы. Проверьте id:\n',
+                   'add-point-btn:', !!addBtn,
+                   'create-point-modal:', !!modal,
+                   'modal-overlay:', !!overlay);
+      return;
+    }
+
+    // Функции открытия/закрытия
+    const openModal = () => {
+      overlay.classList.add('active');
+      modal.classList.add('active');
+      // блокируем прокрутку страницы при открытой модалке (опционально)
+      document.documentElement.style.overflow = 'hidden';
+    };
+    const closeModal = () => {
+      overlay.classList.remove('active');
+      modal.classList.remove('active');
+      document.documentElement.style.overflow = '';
+    };
+
+    // Открыть по кнопке
+    addBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+
+    // Закрыть по клику на оверлей
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    // Закрыть по всем элементам с data-close
+    document.querySelectorAll('[data-close]').forEach(el => {
+      el.addEventListener('click', (ev) => { ev.preventDefault(); closeModal(); });
+    });
+
+    // ESC — закрыть
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape') closeModal();
+    });
+
+    console.info('Modal init: успешно привязаны обработчики.');
+  } catch (err) {
+    // В идеале ошибок не должно быть, но на случай — выводим их в консоль
+    console.error('Modal init: непредвиденная ошибка', err);
+  }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("tagsSelect");
+    const tags = Array.from(container.children);
+
+    // Сохраняем оригинальный порядок
+    tags.forEach((tag, i) => tag.dataset.originalIndex = i);
+
+    function reorder() {
+        const all = Array.from(container.children);
+
+        const active = all.filter(t => t.classList.contains("active"));
+        const inactive = all.filter(t => !t.classList.contains("active"));
+
+        // Возвращаем неактивные в исходном порядке
+        inactive.sort((a, b) => a.dataset.originalIndex - b.dataset.originalIndex);
+
+        // Составляем новый порядок: активные первыми
+        const newOrder = [...active, ...inactive];
+
+        // Добавляем в контейнер
+        newOrder.forEach(el => container.appendChild(el));
+    }
+
+    tags.forEach(tag => {
+        tag.addEventListener("click", () => {
+            tag.classList.toggle("active");
+            reorder();
+        });
+    });
+});
+
+
+// Добавление лого
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("nko-logo");
+    const status = document.getElementById("file-status");
+
+    input.addEventListener("change", () => {
+        if (input.files.length > 0) {
+            status.textContent = input.files[0].name;
+            status.className = "file-status success";
+        } else {
+            status.textContent = "";
+            status.className = "file-status";
+        }
+    });
+});
