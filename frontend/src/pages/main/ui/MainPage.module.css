@@ -55,3 +55,17 @@
     display: block;
     pointer-events: auto;
 }
+
+@media (max-width: 900px) {
+    .mainArea {
+        padding: 12px;
+    }
+
+    .rightCol {
+        display: none;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+}

@@ -60,3 +60,9 @@
 .loadMore:hover {
     background: #004f85;
 }
+
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+}

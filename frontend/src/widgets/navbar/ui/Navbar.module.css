@@ -27,6 +27,11 @@
     background: url('/images/logo.png') no-repeat center/contain;
 }
 
+.brand {
+    display: flex;
+    flex-direction: column;
+}
+
 .companyName {
     font-size: 28px;
     color: #333333;
@@ -60,4 +65,15 @@
 
 .notifIcon .material-icons:hover {
     color: #004f85;
+}
+
+@media (max-width: 900px) {
+    .companyName {
+        font-size: 20px;
+    }
+
+    .navRight {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
 }

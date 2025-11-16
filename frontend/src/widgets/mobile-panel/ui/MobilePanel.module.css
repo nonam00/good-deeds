@@ -4,19 +4,27 @@
     left: 0;
     right: 0;
     bottom: 0;
-    top: 0;
-    height: 100vh;
+    height: 80vh;
     background: #fff;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-    transform: translateY(85%);
+    transform: translateY(calc(100% - 200px));
     transition: .28s;
     box-shadow: 0 -8px 30px rgba(0,0,0,.12);
     z-index: 70;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+@media (max-width: 900px) {
+    .mobilePanel {
+        display: flex;
+    }
 }
 
 .mobilePanel.open {
     transform: translateY(0);
+    max-height: none;
 }
 
 .panelHeader {
@@ -25,6 +33,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .panelHeader::after {
@@ -38,8 +47,21 @@
 .mobileContent {
     padding: 12px;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    height: calc(100vh - 28px - 12px*2);
+    flex: 1;
+    min-height: 0;
+    padding-bottom: 80px;
+    overscroll-behavior: contain;
+}
+
+.mobilePanel.open {
+    height: 90vh;
+}
+
+.mobilePanel.open .mobileContent {
+    flex: 1;
+    min-height: 0;
 }
 
 .searchBox {
@@ -74,6 +96,13 @@
     column-gap: 6px;
 }
 
+@media (max-width: 480px) {
+    .filtersGrid {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 4px;
+    }
+}
+
 .found {
     margin: 12px 0;
     font-size: 14px;
@@ -89,4 +118,10 @@
 .closeButton {
     padding: 12px;
     text-align: center;
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 12px;
+    padding-top: 16px;
 }
