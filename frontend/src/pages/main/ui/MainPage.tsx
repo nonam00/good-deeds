@@ -27,9 +27,6 @@ export const MainPage: React.FC = () => {
           <YandexMap />
           <aside className={styles.rightCol}>
             <CitySearch/>
-            <div className={styles.mapPlaceholder}>
-              Карта (плейсхолдер)
-            </div>
           </aside>
         </main>
       </div>

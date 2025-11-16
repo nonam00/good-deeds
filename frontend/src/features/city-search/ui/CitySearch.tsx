@@ -11,8 +11,8 @@ export const CitySearch: React.FC = () => {
   const updateSuggestions = (searchQuery: string) => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) {
-      setSuggestions([]);
-      setShowSuggestions(false);
+      setSuggestions(rosatomCities);
+      setShowSuggestions(true);
       return;
     }
 
