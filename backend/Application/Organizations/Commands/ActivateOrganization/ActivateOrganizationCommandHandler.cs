@@ -1,3 +1,4 @@
+using Application.Organizations.Errors;
 using Application.Organizations.Interfaces;
 using Application.Shared.Data;
 using Application.Shared.Messaging;
@@ -21,7 +22,7 @@ public class ActivateOrganizationCommandHandler : ICommandHandler<ActivateOrgani
 
         if (organization == null)
         {
-            return Result.Failure(new Error("",""));
+            return Result.Failure(OrganizationErrors.NotFound);
         }
         
         organization.Activate();

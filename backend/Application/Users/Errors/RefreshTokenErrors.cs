@@ -6,9 +6,9 @@ public static class RefreshTokenErrors
 {
     public static readonly Error NotFound = new(
         nameof(NotFound),
-        "Refresh token does not exist");
+        "Refresh токен не существует");
     
     public static readonly Error RelevantNotFound = new(
         nameof(RelevantNotFound),
-        "Refresh token does not exist or expired");
+        "Refresh токен не существует или истёк срок его действия");
 }

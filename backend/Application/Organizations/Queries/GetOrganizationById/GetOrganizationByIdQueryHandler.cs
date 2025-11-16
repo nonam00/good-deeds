@@ -1,3 +1,4 @@
+using Application.Organizations.Errors;
 using Application.Organizations.Interfaces;
 using Application.Organizations.Models;
 using Application.Shared.Data;
@@ -21,7 +22,7 @@ public class GetOrganizationByIdQueryHandler : IQueryHandler<GetOrganizationById
 
         if (organization == null)
         {
-            return Result<OrganizationVm>.Failure(new Error("", ""));
+            return Result<OrganizationVm>.Failure(OrganizationErrors.NotFound);
         }
         
         return Result<OrganizationVm>.Success(organization);

@@ -1,3 +1,4 @@
+using Application.Organizations.Errors;
 using Application.Organizations.Interfaces;
 using Application.Shared.Clients;
 using Application.Shared.Data;
@@ -28,7 +29,7 @@ public class UpdateOrganizationCommandHandler : ICommandHandler<UpdateOrganizati
 
         if (organization == null)
         {
-            return Result.Failure(new Error("", ""));
+            return Result.Failure(OrganizationErrors.NotFound);
         }
         
         Coordinates? coordinates = null;
