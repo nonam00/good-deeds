@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Rosatom';
+    src: url('/fonts/Rosatom-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rosatom';
+    src: url('/fonts/Rosatom-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+*{
+    font-family: 'Rosatom', sans-serif;
+}
+
+:root{--dark:#003274;--mid:#025EA1;--light:#6cace4;--text:#333;--bg:#f7f9fb;--card:#fff;--radius:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.mobile-only{display:none}
+
+a:link{
+    color:#333333;
+    text-decoration: none;
+}
+a:visited{
+    color:#333333;
+    text-decoration: none;
+}
+a:hover{
+    color:#333333;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+/* Material Icons */
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        background-size: cover;
+        background-position: 30px 50%;
+    }
+
+    .navbar button {
+        width: 100%;
+    }
+
+    .btn-outline{
+        height: 40px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar{display:none}
+    .mobile-only{display:inline-block}
+    .mobile-panel{display:block}
+}

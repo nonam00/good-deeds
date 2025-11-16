@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Text.Json.Nodes;
 
 using Domain.ValueObjects;
@@ -11,18 +12,19 @@ public class MapClient : IMapClient, IDisposable
 {
     private readonly HttpClient _httpClient;
     private readonly ILogger<MapClient> _logger;
+    private readonly string _apiKey;
     
-    public MapClient(ILogger<MapClient> logger)
+    public MapClient(IOptions<MapClientOptions> options, ILogger<MapClient> logger)
     {
         _logger = logger;
         _httpClient = new HttpClient();
+        _apiKey = options.Value.ApiKey;
     }
 
     public async Task<Result<Coordinates>> GetCoordinates(string address, CancellationToken cancellationToken = default)
     {
         var escapedAddress=  Uri.EscapeDataString(address);
-        string url =
-            $"https://geocode-maps.yandex.ru/v1/?apikey=6eff2772-bb79-45df-b43d-2735c0e4aab9&geocode={escapedAddress}&format=json";
+        var url = $"https://geocode-maps.yandex.ru/v1/?apikey={_apiKey}&geocode={escapedAddress}&format=json";
         
         var result = await _httpClient.GetAsync(url, cancellationToken).ConfigureAwait(false);
 
@@ -34,8 +36,6 @@ public class MapClient : IMapClient, IDisposable
         }
         
         var jsonString  = await result.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-       
-        _logger.LogInformation("Received json: {jsonString}", jsonString);
         
         var rootNode = JsonNode.Parse(jsonString);
         

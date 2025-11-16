@@ -1,0 +1,48 @@
+.filterItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.filterLabel {
+    display: block;
+    width: 100%;
+    max-width: 65px;
+    font-size: 12px;
+    margin-top: 8px;
+    line-height: 1;
+    padding: 0 4px;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.filterBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: #025EA1;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.filterBtn .material-icons {
+    font-size: 28px;
+    color: #fff !important;
+}
+
+.filterBtn.active {
+    background: #003274;
+}
+
+.filterBtn:hover {
+    background: #003274;
+}

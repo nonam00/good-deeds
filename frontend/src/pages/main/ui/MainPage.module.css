@@ -1,0 +1,57 @@
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.mainArea {
+    flex: 1;
+    padding: 18px;
+    position: relative;
+}
+
+.rightCol {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    width: 300px;
+}
+
+.mapPlaceholder {
+    height: 420px;
+    border-radius: 6px;
+    background: linear-gradient(180deg,#f2f8ff,#fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #dbeefc;
+    margin-top: 12px;
+    color: #666;
+}
+
+.footer {
+    text-align: center;
+    padding: 18px;
+    color: #3333338a;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1001;
+    display: none;
+    pointer-events: none;
+}
+
+.modalOverlay.active {
+    display: block;
+    pointer-events: auto;
+}

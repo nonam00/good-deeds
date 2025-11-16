@@ -1,0 +1,92 @@
+.mobilePanel {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 100vh;
+    background: #fff;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    transform: translateY(85%);
+    transition: .28s;
+    box-shadow: 0 -8px 30px rgba(0,0,0,.12);
+    z-index: 70;
+}
+
+.mobilePanel.open {
+    transform: translateY(0);
+}
+
+.panelHeader {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.panelHeader::after {
+    content: "";
+    width: 80px;
+    height: 6px;
+    border-radius: 6px;
+    background: #d1d5db;
+}
+
+.mobileContent {
+    padding: 12px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: calc(100vh - 28px - 12px*2);
+}
+
+.searchBox {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #33333371;
+    z-index: 1;
+}
+
+.searchBox input {
+    padding-left: 40px;
+}
+
+.filtersTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filtersGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: start;
+    column-gap: 6px;
+}
+
+.found {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.orgList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.closeButton {
+    padding: 12px;
+    text-align: center;
+}

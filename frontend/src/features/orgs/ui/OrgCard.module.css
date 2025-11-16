@@ -1,0 +1,37 @@
+.orgCard {
+    background: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #33333334;
+    cursor: pointer;
+}
+
+.orgCard:hover {
+    border: 1.5px solid #33333359;
+    background: #33333311;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.tag {
+    background: #6cace4;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.orgName {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.orgAddress {
+    color: #555;
+    font-size: 14px;
+}

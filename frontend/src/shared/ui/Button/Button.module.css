@@ -1,0 +1,31 @@
+.button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: transparent;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 28px;
+}
+
+.primary {
+    background: #025EA1;
+    color: #fff;
+}
+
+.primary:hover {
+    background: #004f85;
+}
+
+.outline {
+    background: #025EA1;
+    color: #fff;
+}
+
+.outline:hover {
+    background: #004f85;
+}

@@ -16,12 +16,11 @@ public static class DependencyInjection
     {
         services.AddAuthServices(configuration)
             .AddEmailServices(configuration)
-            .AddFilesServices();
-        
-        services.AddScoped<IMapClient, MapClient>();
+            .AddFilesServices()
+            .AddMapServices(configuration);
         
         return services;
-    }
+    }   
 
     private static IServiceCollection AddAuthServices(this IServiceCollection services, IConfiguration configuration)
     {
@@ -42,6 +41,13 @@ public static class DependencyInjection
     private static IServiceCollection AddFilesServices(this IServiceCollection services)
     {
         services.AddScoped<IFileServiceClient, FileServiceClient>();
+        return services;
+    }
+
+    private static IServiceCollection AddMapServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<MapClientOptions>(configuration.GetRequiredSection(nameof(MapClientOptions)));
+        services.AddScoped<IMapClient, MapClient>();
         return services;
     }
 }

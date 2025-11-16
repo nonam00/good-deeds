@@ -1,0 +1,62 @@
+.sidebar {
+    width: 345px;
+    background: #fff;
+    padding: 18px;
+    height: calc(100vh - 64px);
+    overflow: auto;
+    box-shadow: 0 6px 18px rgba(2,94,161,.06);
+}
+
+.searchBox {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #33333371;
+    z-index: 1;
+}
+
+.searchBox input {
+    padding-left: 40px;
+}
+
+.filtersTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filtersGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: start;
+    column-gap: 6px;
+}
+
+.found {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.orgList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.loadMore {
+    margin-top: 10px;
+    background-color: #003274;
+    width: 100%;
+}
+
+.loadMore:hover {
+    background: #004f85;
+}

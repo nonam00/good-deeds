@@ -1,0 +1,143 @@
+.modal {
+    position: fixed;
+    background: #fff;
+    width: 380px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    color: #003274;
+}
+
+.modalHeader h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modalClose {
+    cursor: pointer;
+    font-size: 22px;
+    color: #333333;
+}
+
+.checkboxRow {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 4px;
+    font-size: 13px;
+    color: #333333;
+    align-items: flex-start;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.modalBottom {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.linkSmall {
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #025EA1;
+}
+
+.logoUpload {
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #3333337a;
+    font-size: 14px;
+    color: #333333ad;
+    align-items: center;
+}
+
+.logoLabel {
+    flex: 1;
+}
+
+.logoPlus {
+    font-size: 20px;
+    color: #025EA1;
+    font-weight: bold;
+}
+
+.fileStatus {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.fileStatus.success {
+    color: #025EA1;
+    font-weight: 600;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    background: #6cace4;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.tagsSelect {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.tagOption {
+    padding: 6px 12px;
+    background: #6CACE4;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tagOption.active {
+    background: #025EA1;
+    color: white;
+}
+
+.tagOption.active::after {
+    content: "✕";
+    font-size: 13px;
+    opacity: 0.85;
+}
